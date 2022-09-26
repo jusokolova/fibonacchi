@@ -22,9 +22,7 @@ export const useFibonacci = () => {
 
   /* Обработчик клика на кнопку */
   const handleClick = useCallback((isForward) => {
-    setNumbers((prev) => {
-      const [first, second] = prev;
-
+    setNumbers(([first, second]) => {
       if (isForward) {
         return [second, first + second];
       }
