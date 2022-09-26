@@ -1,4 +1,7 @@
 import './App.css';
+
+import { Button, Card } from './components';
+
 import { useFibonacci } from './useFibonacci';
 
 function App() {
@@ -6,19 +9,25 @@ function App() {
 
   return (
     <div className="App">
-      <button className="button" onClick={handleBack} disabled={prevButtonDisabled}>
+      <Button disabled={prevButtonDisabled} onClick={handleBack}>
         Prev
-      </button>
+      </Button>
+
       <div className="cards">
         {numbersToDisplay?.map((number, index) => (
-          <div key={index.toString()} className="card" style={{ backgroundColor: backgroundColor(number) }}>
+          <Card
+            key={index.toString()}
+            className="card"
+            style={{ backgroundColor: backgroundColor(number) }}
+          >
             {number}
-          </div>
+          </Card>
         ))}
       </div>
-      <button className="button" onClick={handleForward}>
+
+      <Button onClick={handleForward}>
         Next
-      </button>
+      </Button>
     </div>
   );
 }
