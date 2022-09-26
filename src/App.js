@@ -1,23 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import { useFibonacci } from './useFibonacci';
 
 function App() {
+  const { prevButtonDisabled, numbersToDisplay, handleForward, handleBack, backgroundColor } = useFibonacci();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button className="button" onClick={handleBack} disabled={prevButtonDisabled}>
+        Prev
+      </button>
+      <div className="cards">
+        {numbersToDisplay?.map((number, index) => (
+          <div key={index.toString()} className="card" style={{ backgroundColor: backgroundColor(number) }}>
+            {number}
+          </div>
+        ))}
+      </div>
+      <button className="button" onClick={handleForward}>
+        Next
+      </button>
     </div>
   );
 }
